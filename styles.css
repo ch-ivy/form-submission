@@ -13,6 +13,10 @@ h1,
 h2 {
    font-family: "Roboto Slab", serif !important;
 }
+button {
+   font-family: "Nunito Sans", sans-serif !important
+    ;
+}
 .pl-2 {
    padding-left: 30px;
 }
@@ -212,15 +216,22 @@ i {
    text-align: center;
    margin-top: 15px;
 }
-
+.fw-bold {
+   font-weight: bold;
+   font-size: 16px;
+}
 .btn-submit {
    background-color: #186acf;
-   color: white;
+   color: white !important;
    text-align: center;
-   padding: 8px 35px;
+   padding: 11px 35px;
    border: none;
    cursor: pointer;
    font-weight: bold;
+   background-image: url(/icons/btn-bg.svg);
+   width: 11em;
+   background-position: center;
+   font-size: 17px;
 }
 
 .btn-submit:disabled,

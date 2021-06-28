@@ -76,7 +76,7 @@ async function submit(timestamp) {
    form.reset();
    alert("Submitted");
    reset();
-   return true;
+   location.reload();
 }
 
 async function accessDatabase() {}

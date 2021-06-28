@@ -60,73 +60,64 @@ const validate = (item) => {
    switch (item.name) {
       case "phone":
          // Checks if Phone number syntax is valid
+         item.addEventListener("keydown", (event) => {
+            if (!/\d+/.test(event.key) || item.value.length > 10) {
+               event.preventDefault();
+            }
+         });
          if (item.value !== "" && phone_regex.test(item.value)) {
             formState.phone = "valid";
-            item.classList.remove("error");
-            status_message.phone.classList.add("valid");
-            status_message.phone.classList.remove("error");
-            status_message.phone.innerHTML = "Phone Number is correct!";
          } else {
             formState.phone = "invalid";
-            item.classList.add("error");
-            status_message.phone.classList.add("error");
-            status_message.phone.classList.remove("valid");
-            status_message.phone.innerHTML = "Phone Number is incorrect!";
          }
 
          break;
       case "first_name":
          // checks if first name is valid and contains only letters
-
+         item.addEventListener("keydown", (event) => {
+            if (!/^[A-Za-z]+$/.test(event.key)) {
+               event.preventDefault();
+            }
+         });
          if (item.value !== "" && /^[A-Za-z]+$/.test(item.value)) {
             formState.fname = "valid";
-            item.classList.remove("error");
-            status_message.fname.classList.add("valid");
-            status_message.fname.classList.remove("error");
-            status_message.fname.innerHTML = "First Name is correct!";
          } else {
             formState.fname = "invalid";
-            item.classList.add("error");
-            status_message.fname.classList.add("error");
-            status_message.fname.classList.remove("valid");
-            status_message.fname.innerHTML = "First Name is incorrect!";
          }
          break;
       case "last_name":
          // checks if last name is valid and contains only letters
+         item.addEventListener("keydown", (event) => {
+            if (!/^[A-Za-z]+$/.test(event.key)) {
+               event.preventDefault();
+            }
+         });
          if (item.value !== "" && /^[A-Za-z]+$/.test(item.value)) {
             formState.lname = "valid";
-            item.classList.remove("error");
-            status_message.lname.classList.add("valid");
-            status_message.lname.classList.remove("error");
-            status_message.lname.innerHTML = "Last Name is correct!";
          } else {
             formState.lname = "invalid";
-            item.classList.add("error");
-            status_message.lname.classList.add("error");
-            status_message.lname.classList.remove("valid");
-            status_message.lname.innerHTML = "Last Name is incorrect!";
          }
 
          break;
       case "username":
+         item.addEventListener("keydown", (event) => {
+            if (/[^A-Za-z 0-9_-]+/.test(event.key)) {
+               event.preventDefault();
+            }
+         });
          if (item.value !== "") {
             // Checks if username has more than 4 characters
             if (item.value.length >= 4) {
                uname_check.char_len.classList.add("active");
-               item.classList.remove("error");
 
                // Checks if username has less than 21 characters
                if (item.value.length < 21) {
                   uname_check.username_len.classList.add("active");
-                  item.classList.remove("error");
                } else {
                   uname_check.username_len.classList.remove("active");
-                  item.classList.add("error");
                }
             } else {
                uname_check.char_len.classList.remove("active");
-               item.classList.add("error");
             }
 
             // Checks if username Contains a number
@@ -144,7 +135,6 @@ const validate = (item) => {
             }
          } else {
             formState.username = "invalid";
-            item.classList.add("error");
             uname_check.num_check.classList.remove("active");
             uname_check.username_len.classList.remove("active");
             uname_check.char_len.classList.remove("active");
@@ -155,21 +145,10 @@ const validate = (item) => {
 
          if (username_regex.test(item.value) && !badwordChecker(item.value)) {
             formState.username = "valid";
-            status_message.username.classList.add("valid");
-            status_message.username.classList.remove("error");
-            status_message.username.innerHTML = "Username is correct!";
          } else {
             formState.username = "invalid";
-            status_message.username.classList.add("error");
-            status_message.username.classList.remove("valid");
-            status_message.username.innerHTML = "Username is incorrect!";
          }
 
-         if (badwordChecker(item.value)) {
-            status_message.username.innerHTML = "Username is Forbidden!";
-            status_message.username.classList.add("error");
-            status_message.username.classList.remove("valid");
-         }
          break;
 
       case "password":
@@ -214,25 +193,18 @@ const validate = (item) => {
 
             if (password_regex.test(item.value)) {
                formState.password = "valid";
-               item.classList.remove("error");
-               status_message.password.classList.add("valid");
-               status_message.password.classList.remove("error");
-               status_message.password.innerHTML = "Password is correct!";
             } else {
                formState.password = "invalid";
-               item.classList.add("error");
-               status_message.password.classList.add("error");
-               status_message.password.classList.remove("valid");
-               status_message.password.innerHTML = "Password is incorrect!";
             }
          } else {
             formState.password = "invalid";
-            item.classList.add("error");
             pass_check.sym_check.classList.remove("active");
             pass_check.num_check.classList.remove("active");
             pass_check.big_case.classList.remove("active");
             pass_check.char_len.classList.remove("active");
+            pass_check.max_len.classList.remove("active");
          }
+         console.log(formState);
          break;
    }
 };
