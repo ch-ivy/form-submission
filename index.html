@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <base href="index.html" />
+      <link
+         href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600&family=Roboto+Sla:wght@600;700;800&display=swap"
+         rel="stylesheet"
+      />
+      <link
+         rel="stylesheet"
+         href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+         integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
+         crossorigin="anonymous"
+      />
+      <link rel="stylesheet" href="styles.css" />
+      <link
+         rel="shortcut icon"
+         href="/icons/Bullseye icon-01.svg"
+         type="image/x-icon"
+      />
+      <title>BIDONOW</title>
+   </head>
+   <body>
+      <section>
+         <div class="container">
+            <div class="center">
+               <div class="logo">
+                  <h2 class="logo-text">
+                     <img src="/icons/Bullseye icon-01.svg" alt="bidonow" />
+
+                     <span> BIDONOW </span>
+                  </h2>
+                  <h3>Hello!</h3>
+               </div>
+               <div class="reg-form">
+                  <h3 class="form-title">Create a new account</h3>
+
+                  <!-- BEGIN::FORM  -->
+                  <div class="form">
+                     <form id="form" name="register">
+                        <!-- BEGIN::PHONE INPUT  -->
+                        <div class="form-group">
+                           <div class="label">
+                              <img src="/icons/phone.svg" alt="tel-number" />
+                              <span> Enter your mobile number </span>
+                           </div>
+                           <div class="tel-input required">
+                              <div class="code">
+                                 <select name="" id="">
+                                    <option value="USA">USA +1</option>
+                                 </select>
+                              </div>
+                              <div class="tel-num">
+                                 <input
+                                    required
+                                    type="tel"
+                                    name="phone"
+                                    id="phone"
+                                    onkeyup="validate(this)"
+                                    onmouseup="validate(this)"
+                                 />
+                              </div>
+                           </div>
+                           <span class="error pl-2" id="phone_validator">
+                           </span>
+                        </div>
+                        <!-- END::PHONE INPUT  -->
+
+                        <!-- BEGIN::NAME INPUT  -->
+                        <div class="form-group">
+                           <div class="label">
+                              <img src="/icons/note.svg" alt="name" />
+
+                              <span> Enter your legal name </span>
+                           </div>
+                           <div class="text-input required">
+                              <input
+                                 required
+                                 type="text"
+                                 name="first_name"
+                                 placeholder="Enter Legal First Name"
+                                 id="fname"
+                                 onkeyup="validate(this)"
+                                 onmouseup="validate(this)"
+                              />
+
+                              <input
+                                 required
+                                 type="text"
+                                 name="last_name"
+                                 placeholder="Enter Legal Last Name"
+                                 id="lname"
+                                 onkeyup="validate(this)"
+                                 onmouseup="validate(this)"
+                              />
+                              <span class="error pl-2" id="fname_validator">
+                              </span>
+                              <span class="error pl-2" id="lname_validator">
+                              </span>
+                           </div>
+                        </div>
+                        <!-- END::NAME INPUT  -->
+
+                        <!-- BEGIN::USERNAME INPUT  -->
+                        <div class="form-group">
+                           <div class="label">
+                              <img src="/icons/userg.svg" alt="username" />
+
+                              <span> Choose your username </span>
+                           </div>
+                           <div class="text-input required">
+                              <input
+                                 required
+                                 type="text"
+                                 name="username"
+                                 placeholder="This would be your referral code"
+                                 id="username"
+                                 onkeyup="validate(this)"
+                                 onmouseup="validate(this)"
+                              />
+                              <span class="error pl-2" id="username_validator">
+                              </span>
+                              <div class="checker">
+                                 <ul class="check-list">
+                                    <li>
+                                       <i
+                                          class="fas fa-check-circle"
+                                          id="u_char_len"
+                                       ></i>
+                                       <span> At least 4 characters </span>
+                                    </li>
+                                    <li>
+                                       <i
+                                          class="fas fa-check-circle"
+                                          id="u_char_check"
+                                       ></i>
+                                       <span> Letters are Allowed </span>
+                                    </li>
+                                    <li>
+                                       <i
+                                          class="fas fa-check-circle"
+                                          id="u_num_check"
+                                       ></i>
+                                       <span> Numbers are Allowed </span>
+                                    </li>
+                                    <li>
+                                       <i
+                                          class="fas fa-check-circle"
+                                          id="username_len"
+                                       ></i>
+                                       <span>
+                                          Less than 21 characters are allowed
+                                       </span>
+                                    </li>
+                                 </ul>
+                              </div>
+                           </div>
+                        </div>
+                        <!-- END::USERNAME INPUT  -->
+
+                        <!-- BEGIN::PASSWORD INPUT  -->
+                        <div class="form-group">
+                           <div class="label">
+                              <img src="/icons/lock.svg" alt="password" />
+
+                              <span> Create a password </span>
+                           </div>
+                           <div class="text-input required">
+                              <input
+                                 required
+                                 type="password"
+                                 name="password"
+                                 placeholder="New password"
+                                 id="password"
+                                 onkeyup="validate(this)"
+                                 onmouseup="validate(this)"
+                              />
+                              <i
+                                 class="fas fa-eye-slash eye"
+                                 id="eye"
+                                 onclick="showPassword()"
+                                 title="Show Password"
+                              ></i>
+                              <span class="error pl-2" id="password_validator">
+                              </span>
+                              <div class="checker">
+                                 <ul class="check-list">
+                                    <li>
+                                       <i
+                                          class="fas fa-check-circle"
+                                          id="pass_len"
+                                       ></i>
+                                       <span> At least 8 characters </span>
+                                    </li>
+                                    <li>
+                                       <i
+                                          class="fas fa-check-circle"
+                                          id="big_case"
+                                       ></i>
+                                       <span> At least 1 capital letter </span>
+                                    </li>
+                                    <li>
+                                       <i
+                                          class="fas fa-check-circle"
+                                          id="pass_num"
+                                       ></i>
+                                       <span> At least 1 number </span>
+                                    </li>
+                                    <li>
+                                       <i
+                                          class="fas fa-check-circle"
+                                          id="pass_sym"
+                                       ></i>
+                                       <span>
+                                          At least 1 special character except
+                                          these ( $ < > & ^ ! / [ ] *\)
+                                       </span>
+                                    </li>
+                                    <li>
+                                       <i
+                                          class="fas fa-check-circle"
+                                          id="max_len"
+                                       ></i>
+                                       <span>
+                                          Less than 33 characters are allowed
+                                       </span>
+                                    </li>
+                                 </ul>
+                              </div>
+                           </div>
+                        </div>
+                        <!-- END::PASSWORD INPUT  -->
+
+                        <div class="submit">
+                           <button
+                              type="submit"
+                              class="btn-submit"
+                              id="submit-btn"
+                           >
+                              SIGN UP
+                           </button>
+                        </div>
+                     </form>
+                     <!-- END::FORM  -->
+                  </div>
+                  <div class="footer">
+                     <p>
+                        <img
+                           src="/icons/footer.svg"
+                           alt=""
+                           style="height: 20px; width: 20px"
+                        />
+                        We never sell any data without your permission
+                     </p>
+                     <p>
+                        <a href="http://">Click Here</a> to contact Tech Support
+                        for Question/Issues.
+                     </p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <script src="index.js"></script>
+      <script type="text/javascript" src="validate.js"></script>
+      <script src="badwords.json"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+   </body>
+</html>
