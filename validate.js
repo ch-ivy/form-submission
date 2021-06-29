@@ -60,16 +60,34 @@ const validate = (item) => {
    switch (item.name) {
       case "phone":
          // Checks if Phone number syntax is valid
+
          item.addEventListener("keydown", (event) => {
-            if (!/\d+/.test(event.key) || item.value.length > 10) {
-               event.preventDefault();
+            // Adding seperators to phone number
+            if (event.key !== "Backspace") {
+               if (!/^[0-9]+$/.test(event.key) || item.value.length > 13) {
+                  event.preventDefault();
+               }
+               if (item.value == "") {
+                  item.value += "(";
+               }
+               if (item.value.length == 4) {
+                  item.value += ")-";
+               }
+
+               if (item.value.length == 9) {
+                  item.value += "-";
+               }
             }
          });
+
+         // Validates Phone number input
+
          if (item.value !== "" && phone_regex.test(item.value)) {
             formState.phone = "valid";
          } else {
             formState.phone = "invalid";
          }
+         localStorage.setItem("Mem_Mobile", "VARCHAR");
 
          break;
       case "first_name":
@@ -84,6 +102,8 @@ const validate = (item) => {
          } else {
             formState.fname = "invalid";
          }
+         localStorage.setItem("Mem_F_Name ", "VARCHAR");
+
          break;
       case "last_name":
          // checks if last name is valid and contains only letters
@@ -97,6 +117,7 @@ const validate = (item) => {
          } else {
             formState.lname = "invalid";
          }
+         localStorage.setItem("Mem_L_Name ", "VARCHAR");
 
          break;
       case "username":
@@ -105,19 +126,19 @@ const validate = (item) => {
                event.preventDefault();
             }
          });
-         if (item.value !== "") {
+         if (item.value !== "" && !badwordChecker(item.value)) {
             // Checks if username has more than 4 characters
-            if (item.value.length >= 4) {
-               uname_check.char_len.classList.add("active");
+            if (item.value.length < 21) {
+               uname_check.username_len.classList.add("active");
 
                // Checks if username has less than 21 characters
-               if (item.value.length < 21) {
-                  uname_check.username_len.classList.add("active");
+               if (item.value.length >= 4) {
+                  uname_check.char_len.classList.add("active");
                } else {
-                  uname_check.username_len.classList.remove("active");
+                  uname_check.char_len.classList.remove("active");
                }
             } else {
-               uname_check.char_len.classList.remove("active");
+               uname_check.username_len.classList.remove("active");
             }
 
             // Checks if username Contains a number
@@ -128,7 +149,7 @@ const validate = (item) => {
             }
 
             // Checks if username Contains an Alphabet
-            if (/\w+/.test(item.value)) {
+            if (/[A-Za-z]+/.test(item.value)) {
                uname_check.char_check.classList.add("active");
             } else {
                uname_check.char_check.classList.remove("active");
@@ -148,11 +169,20 @@ const validate = (item) => {
          } else {
             formState.username = "invalid";
          }
+         localStorage.setItem("Referral_UserName", "VARCHAR");
 
          break;
 
       case "password":
+         const show = document.getElementById("eye");
+         const show_icon = document.getElementById("eye-icon");
+
+         // Checks if there is a character in input
          if (item.value !== "") {
+            // Activates show password icon
+            show_icon.classList.add("active");
+            show.disabled = false;
+
             // Checks if password has more than 8 characters
             if (item.value.length >= 8) {
                pass_check.char_len.classList.add("active");
@@ -197,14 +227,20 @@ const validate = (item) => {
                formState.password = "invalid";
             }
          } else {
+            // Deactivates show password icon
+            show_icon.classList.remove("active");
+            show.disabled = true;
+
             formState.password = "invalid";
+
             pass_check.sym_check.classList.remove("active");
             pass_check.num_check.classList.remove("active");
             pass_check.big_case.classList.remove("active");
             pass_check.char_len.classList.remove("active");
             pass_check.max_len.classList.remove("active");
          }
-         console.log(formState);
+         localStorage.setItem("Mem_Psswrd", "VARCHAR");
+
          break;
    }
 };

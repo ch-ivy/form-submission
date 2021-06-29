@@ -35,12 +35,12 @@ form {
 }
 
 input {
-   width: 86%;
-   height: 35px;
+   width: 362.26px;
+   height: 60.38px;
    padding-left: 15px;
    padding-right: 5px;
    outline: none !important;
-   font-size: 16px;
+   font-size: 22px;
 }
 input,
 select,
@@ -72,12 +72,14 @@ input:focus {
    margin-top: 20px;
 }
 .logo img {
-   height: 40px;
-   width: 40px;
+   width: 60.67px;
+   height: 60.67px;
+   background: transparent;
+   padding-top: 10px;
 }
 .logo .logo-text {
    font-weight: bold;
-   font-size: 25px;
+   font-size: 60px;
    display: flex;
    justify-content: center;
    color: #6a6a6a;
@@ -85,34 +87,32 @@ input:focus {
 }
 .logo .logo-text span {
    margin-left: 10px;
-   padding-top: 5px;
 }
 .logo h3 {
    margin-top: 3px;
    font-family: "Roboto Slab", serif !important;
-   flex: 0 0 100%;
-   max-width: 100%;
    font-weight: bold;
-   font-size: 25px;
+   font-size: 60px;
    text-align: center;
    color: #f08400;
+   margin-bottom: 0;
 }
 .reg-form {
    margin-top: 10px;
+   display: flex;
+   justify-content: center;
+   flex-wrap: wrap;
 }
-.reg-form {
-   margin-top: 10px;
-}
+
 .reg-form .form-title {
    text-align: center;
    font-weight: bold;
-   font-size: 18px;
+   font-size: 40px;
    text-align: center;
    color: #000;
+   margin: 0 !important;
 }
 .form {
-   display: flex;
-   justify-content: center;
    padding: 15px;
 }
 .reg-form .footer {
@@ -123,16 +123,18 @@ input:focus {
    margin: 20px auto 7px;
 }
 .reg-form .form .form-group .label img {
-   width: 20px;
-   height: 20px;
-   vertical-align: -webkit-baseline-middle;
+   width: 44.03px;
+   height: 47.63px;
+   background: transparent;
+   vertical-align: middle;
 }
 .reg-form .form .form-group .label span {
    font-weight: bold;
-   font-size: 16px;
+   font-size: 22px;
    text-align: center;
    color: #000;
    padding-bottom: 5px;
+   margin-left: 5px;
 }
 .tel-input {
    display: flex;
@@ -140,36 +142,37 @@ input:focus {
 .tel-input,
 .text-input {
    margin-top: 5px;
-   padding-left: 30px;
+   padding-left: 55px;
    position: relative;
 }
 .tel-input .code {
-   flex: 0 0 35%;
-   max-width: 35%;
+   flex: 0 0 30%;
+   max-width: 30%;
    position: relative;
 }
 .tel-input .tel-num {
-   flex: 0 0 57%;
-   max-width: 57%;
+   flex: 0 0 62%;
+   max-width: 62%;
 }
 .tel-input .code select {
-   height: 40px;
+   height: 66.81px;
    background: white;
    font-weight: bold;
-   font-size: 14px;
+   font-size: 21px;
    text-align: center;
    color: #5c5c5c;
    position: relative;
-   width: 90%;
+   width: 125px;
    padding-top: 9px;
    padding-left: 5px;
 }
 .tel-input .code .sel-icon {
    position: absolute;
-   width: 20px;
-   height: 20px;
+   width: 28.92px;
+   height: 18.94px;
+   background: transparent;
    z-index: 1;
-   bottom: 64%;
+   bottom: 75%;
    left: 5%;
 }
 
@@ -192,9 +195,10 @@ input:focus {
    color: #dc3545;
 }
 .checker {
-   margin-left: auto;
-   margin-right: auto;
-   padding: 5px;
+   padding: 5px 9px;
+   width: 362.26px;
+   background: #fff;
+   border: 1px solid #186acf;
 }
 
 .checker ul {
@@ -203,29 +207,32 @@ input:focus {
 }
 
 .checker ul li {
-   margin-bottom: 5px;
+   margin-bottom: 10px;
+   font-size: 17px;
 }
 
 .checker ul li i,
 i {
    vertical-align: bottom;
    margin-right: 5px;
-   font-size: 24px;
+   font-size: 28px;
    color: #bcbcbc;
 }
 .eye {
    position: absolute;
-   right: 10%;
+   right: 21%;
    z-index: 1;
-   top: 5px;
+   top: 16px;
    cursor: pointer;
+   background: transparent;
+   border: none;
 }
 .eye:hover {
    color: #186acf;
 }
 .submit {
-   text-align: center;
    margin-top: 15px;
+   margin-left: 116px;
 }
 .fw-bold {
    font-weight: bold;
@@ -234,15 +241,16 @@ i {
 .btn-submit {
    background-color: #186acf;
    color: white !important;
-   text-align: center;
+   margin-right: 60px;
    padding: 11px 35px;
    border: none;
    cursor: pointer;
    font-weight: bold;
    background-image: url(/icons/btn-bg.svg);
-   width: 11em;
+   width: 255.21px;
+   height: 73.67px;
    background-position: center;
-   font-size: 17px;
+   font-size: 31px;
 }
 
 .btn-submit:disabled,
@@ -285,5 +293,28 @@ i {
 @media (max-width: 576px) {
    .center {
       width: 100%;
+   }
+   .logo .logo-text,
+   .logo h3 {
+      font-size: 30px;
+   }
+
+   .logo img {
+      height: 40px;
+      width: 40px;
+      padding-top: 0;
+   }
+   .reg-form .form-title {
+      font-size: 20px;
+   }
+
+   .reg-form .form .form-group .label img {
+      height: 20px;
+      width: 20px;
+   }
+
+   input,
+   .checker {
+      width: 100% !important;
    }
 }

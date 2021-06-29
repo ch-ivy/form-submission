@@ -10,7 +10,7 @@ let formState = {
 };
 
 // Checks if form is Valid to enable submit button
-form.addEventListener("change", () => {
+form.addEventListener("keyup", () => {
    document.getElementById("submit-btn").disabled = !isFormValid();
 });
 
@@ -39,7 +39,7 @@ const reset = () => {
 
 // Method to toggle Show/Hide Password
 const showPassword = () => {
-   let eye = document.getElementById("eye");
+   let eye = document.getElementById("eye-icon");
    let x = document.getElementById("password");
    if (x.type === "password") {
       x.type = "text";
@@ -57,28 +57,71 @@ const showPassword = () => {
 // Submit Form Data
 async function submit(timestamp) {
    console.log("clicked");
+
+   // get signed up users from local storage
+   const users = JSON.parse(localStorage.getItem("bidonow_data")) || [];
+
+   // Gets session Id from local storage
+   let session = JSON.parse(localStorage.getItem("session"));
+
+   // Encrypts Password
    const encrypted = CryptoJS.AES.encrypt(
       document.register.password.value,
       key
    );
+
+   // Form Data
    const data = {
-      phone: document.register.phone.value,
-      first_name: document.register.first_name.value,
-      last_name: document.register.last_name.value,
-      username: document.register.username.value,
-      password: encrypted.toString(),
-      updatedAt: Date.now(),
+      Mem_Mobile: document.register.phone.value,
+      Mem_F_Name: document.register.first_name.value,
+      Mem_L_Name: document.register.last_name.value,
+      Referral_UserName: document.register.username.value,
+      Mem_Psswrd: encrypted.toString(),
+      createdAt: Date.now(),
       latest_timestamp: timestamp,
    };
-   localStorage.setItem("bidonow_data", JSON.stringify(data));
-   await accessDatabase();
-   await verifyNumber();
-   form.reset();
-   alert("Submitted");
-   reset();
-   location.reload();
+   users.push(data);
+
+   // Storing Form Inputs in Local storage on submission (Not neccessary)
+   // Acting as Database in the moment
+
+   localStorage.setItem("bidonow_data", JSON.stringify(users));
+
+   // Generating a Session Id fro user
+   if (!session) {
+      const id = "_" + Math.random().toString(36).substr(2, 9);
+      var future = new Date();
+
+      session = {
+         SID: id,
+         expires: future.setDate(future.getDate() + 30),
+      };
+      localStorage.setItem("session", JSON.stringify(session));
+   }
+
+   // Carrying out Async Functions to submit data to databse and verify number
+
+   await accessDatabase()
+      .then(async (res) => {
+         if (res) {
+            await verifyNumber()
+               .then(() => {
+                  // Reset Form on submission.
+                  form.reset();
+                  alert("Submitted");
+                  reset();
+                  location.reload();
+               })
+               .catch((err) => console.error(err));
+         }
+      })
+      .catch((err) => console.error(err));
 }
 
-async function accessDatabase() {}
+async function accessDatabase() {
+   return true;
+}
 
-async function verifyNumber() {}
+async function verifyNumber() {
+   return true;
+}

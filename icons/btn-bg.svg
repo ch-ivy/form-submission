@@ -11,7 +11,7 @@
       <g id="Group_774" data-name="Group 774" transform="translate(9.487 9.808)">
         <path id="Path_179" data-name="Path 179" d="M273.55,32.827a56.892,56.892,0,1,1-56.893-56.934A56.916,56.916,0,0,1,273.55,32.827Z" transform="translate(-159.767 24.107)" fill="#006dda"/>
         <ellipse id="Ellipse_99" data-name="Ellipse 99" cx="28.976" cy="28.997" rx="28.976" ry="28.997" transform="translate(27.755 27.786)" fill="#fff"/>
-        <path id="Path_180" data-name="Path 180" d="M222.491,16.558A22.056,22.056,0,1,1,200.435-5.513,22.062,22.062,0,0,1,222.491,16.558Z" transform="translate(-143.89 39.994)" fill="#f18400"/>
+        <path id="Path_180" data-name="Path 180" d="M222.491,16.558A22.056,22.056,0,1,1,200.435-5.513,22.062,22.062,0,0,1,222.491,16.558Z" transform="translate(-143.89 39.994)" fill="transparent"/>
       </g>
     </g>
   </g>

@@ -66,8 +66,11 @@
                                     type="tel"
                                     name="phone"
                                     id="phone"
+                                    autocomplete="nope"
+                                    placeholder="(###)-###-###"
                                     onkeyup="validate(this)"
                                     onmouseup="validate(this)"
+                                    style="width: 204.84px"
                                  />
                               </div>
                            </div>
@@ -127,6 +130,7 @@
                                  id="username"
                                  onkeyup="validate(this)"
                                  onmouseup="validate(this)"
+                                 autocomplete="off"
                               />
                               <span class="error pl-2" id="username_validator">
                               </span>
@@ -185,12 +189,20 @@
                                  onkeyup="validate(this)"
                                  onmouseup="validate(this)"
                               />
-                              <i
-                                 class="fas fa-eye-slash eye"
+                              <button
+                                 class="eye"
                                  id="eye"
+                                 disabled
                                  onclick="showPassword()"
-                                 title="Show Password"
-                              ></i>
+                                 type="button"
+                              >
+                                 <i
+                                    class="fas fa-eye-slash"
+                                    id="eye-icon"
+                                    title="Show Password"
+                                 ></i>
+                              </button>
+
                               <span class="error pl-2" id="password_validator">
                               </span>
                               <div class="checker">
